@@ -17,7 +17,7 @@
   "gnetId": 315,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1617264358358,
+  "iteration": 1618428880024,
   "links": [],
   "panels": [
     {
@@ -237,7 +237,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum (container_memory_working_set_bytes{id=\"/\",kubernetes_io_hostname=~\"^$Node$\"}) / sum (machine_memory_bytes{kubernetes_io_hostname=~\"^$Node$\"}) / 2 * 100",
+          "expr": "((sum((container_memory_usage_bytes{id=~\"/docker.+\"} - container_memory_cache{id=~\"/docker.+\"}))+sum((container_memory_usage_bytes{id=~\"/user.slice.+\"} - container_memory_cache{id=~\"/user.slice.+\"}))+sum((container_memory_usage_bytes{id=\"/init.scope\"} - container_memory_cache{id=\"/init.scope\"}))) +30000000) / sum (machine_memory_bytes{kubernetes_io_hostname=~\"^$Node$\"}) * 100",
           "interval": "10s",
           "intervalFactor": 1,
           "legendFormat": "",
@@ -459,7 +459,7 @@
         "defaults": {},
         "overrides": []
       },
-      "format": "bytes",
+      "format": "decbytes",
       "gauge": {
         "maxValue": 100,
         "minValue": 0,
@@ -513,7 +513,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum (container_memory_working_set_bytes{id=\"/\",kubernetes_io_hostname=~\"^$Node$\"}) / 2",
+          "expr": "sum((container_memory_usage_bytes{id=~\"/docker.+\"} - container_memory_cache{id=~\"/docker.+\"}))+sum((container_memory_usage_bytes{id=~\"/user.slice.+\"} - container_memory_cache{id=~\"/user.slice.+\"}))+sum((container_memory_usage_bytes{id=\"/init.scope\"} - container_memory_cache{id=\"/init.scope\"}))",
           "interval": "10s",
           "intervalFactor": 1,
           "legendFormat": "",
@@ -604,9 +604,11 @@
       "tableColumn": "",
       "targets": [
         {
+          "exemplar": true,
           "expr": "sum (machine_memory_bytes{kubernetes_io_hostname=~\"^$Node$\"})",
           "interval": "10s",
           "intervalFactor": 1,
+          "legendFormat": "",
           "refId": "A",
           "step": 10
         }
@@ -1045,7 +1047,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.2",
+      "pluginVersion": "7.5.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1171,7 +1173,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.2",
+      "pluginVersion": "7.5.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1561,7 +1563,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.2",
+      "pluginVersion": "7.5.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1825,7 +1827,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.2",
+      "pluginVersion": "7.5.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2070,7 +2072,7 @@
       "type": "row"
     }
   ],
-  "refresh": "5s",
+  "refresh": "10s",
   "schemaVersion": 27,
   "style": "dark",
   "tags": [
@@ -2112,7 +2114,7 @@
     ]
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {
@@ -2143,5 +2145,5 @@
   "timezone": "browser",
   "title": "Monitoring",
   "uid": "N__FB4lGz",
-  "version": 4
+  "version": 6
 }
