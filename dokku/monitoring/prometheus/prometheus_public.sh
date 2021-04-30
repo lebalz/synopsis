@@ -1,7 +1,7 @@
 #!/bin/bash
 APP=prometheus
 MAIL=foo@bar.ch
-NETWORK=$APP
+NETWORK=metric-network
 
 dokku apps:create $APP
 
