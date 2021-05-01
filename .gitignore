@@ -2,3 +2,4 @@
 .prometheus.sh
 .cadvisor.sh
 .grafana.sh
+.push_gateway.sh
