@@ -2,7 +2,7 @@
 APP=grafana
 MAIL=foor@bar.ch
 # a local (intern) network to communicate directly with prometheus
-NETWORK=prometheus
+NETWORK=metric-network
 
 dokku apps:create $APP
 mkdir -p /var/lib/dokku/data/storage/$APP/grafana

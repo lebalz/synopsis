@@ -14,3 +14,6 @@ Start with creating prometheus. It's up to you whether prometheus shall be acces
 
 ## 3. Grafana
 [Guide for Grafana](grafana/README.md)
+
+## 4. Loki
+[Guide for Loki](loki/README.md)

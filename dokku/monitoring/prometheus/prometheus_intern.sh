@@ -1,6 +1,6 @@
 #!/bin/bash
 APP=prometheus
-NETWORK=$APP
+NETWORK=metric-network
 
 dokku apps:create $APP
 

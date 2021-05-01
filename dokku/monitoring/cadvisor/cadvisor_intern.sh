@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # the same as configured in prometheus...
-NETWORK=prometheus
+NETWORK=metric-network
 APP=cadvisor
 
 dokku apps:create $APP
