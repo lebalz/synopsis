@@ -34,5 +34,5 @@ dokku proxy:ports-remove ledokku http:4000:4000
 
 # letsencrypt
 dokku config:set --no-restart ledokku DOKKU_LETSENCRYPT_EMAIL="your@mail.web"
-dokku letsencrypt ledokku
+dokku letsencrypt:enable ledokku
 ```

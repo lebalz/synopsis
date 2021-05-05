@@ -38,7 +38,7 @@ dokku git:from-image $APP grafana/grafana:7.5.2
 
 # letsencrypt
 dokku config:set --no-restart $APP DOKKU_LETSENCRYPT_EMAIL=$MAIL
-dokku letsencrypt $APP
+dokku letsencrypt:enable $APP
 ```
 
 ## Setup Prometheus

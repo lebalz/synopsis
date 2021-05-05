@@ -39,7 +39,7 @@ dokku git:from-image $APP grafana/loki:2.2.1
 
 # letsencrypt
 dokku config:set --no-restart $APP DOKKU_LETSENCRYPT_EMAIL=$MAIL
-dokku letsencrypt $APP
+dokku letsencrypt:enable $APP
 
 # set up authentication
 USER=admin

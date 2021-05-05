@@ -19,7 +19,7 @@ dokku git:from-image $APP gcr.io/cadvisor/cadvisor:v0.39.0
 
 # letsencrypt
 dokku config:set --no-restart $APP DOKKU_LETSENCRYPT_EMAIL=$MAIL
-dokku letsencrypt $APP
+dokku letsencrypt:enable $APP
 
 # set up authentication
 USER=admin

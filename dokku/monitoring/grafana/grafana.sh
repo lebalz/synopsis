@@ -23,10 +23,12 @@ dokku storage:mount $APP /var/lib/dokku/data/storage/$APP/custom.ini:/etc/grafan
 
 # set port mapping
 dokku proxy:ports-add $APP "http:80:3000"
+dokku domains:add $APP "prometheus.dokku.me"
+
 
 # get the latest tag from https://hub.docker.com/r/grafana/grafana/tags
-dokku git:from-image $APP grafana/grafana:7.5.2
+dokku git:from-image $APP grafana/grafana:7.5.5
 
 # letsencrypt
 dokku config:set --no-restart $APP DOKKU_LETSENCRYPT_EMAIL=$MAIL
-dokku letsencrypt $APP
+dokku letsencrypt:enable $APP

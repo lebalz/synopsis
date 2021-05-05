@@ -30,6 +30,7 @@ touch /var/lib/dokku/data/storage/$APP/config/prometheus.yml
 
 # add port mapping
 dokku proxy:ports-set $APP "http:80:9090"
+dokku domains:add $APP "prometheus.dokku.me"
 
 # deploy, get the latest tag from https://hub.docker.com/r/prom/prometheus
 dokku git:from-image $APP prom/prometheus:v2.26.0
@@ -37,7 +38,7 @@ dokku git:from-image $APP prom/prometheus:v2.26.0
 
 # letsencrypt
 dokku config:set --no-restart $APP DOKKU_LETSENCRYPT_EMAIL=$MAIL
-dokku letsencrypt $APP
+dokku letsencrypt:enable $APP
 
 # set up authentication
 USER=admin
