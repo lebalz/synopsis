@@ -1,0 +1,6 @@
+[Unit]
+Description=RAM memory exporter to prometheus pushgateway
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /usr/local/bin/memory_exporter.sh

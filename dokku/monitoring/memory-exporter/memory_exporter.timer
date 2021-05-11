@@ -1,0 +1,10 @@
+[Unit]
+Description=RAM memory exporter to prometheus pushgateway timer
+After=network.target
+
+[Timer]
+OnUnitActiveSec=5s
+OnBootSec=20s
+
+[Install]
+WantedBy=timers.target
