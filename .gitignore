@@ -4,3 +4,4 @@
 .grafana.sh
 .push_gateway.sh
 .bitwarden.sh
+.vscode
